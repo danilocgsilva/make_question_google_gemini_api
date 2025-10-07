@@ -1,0 +1,1 @@
+-e git+https://github.com/danilocgsilva/make_question_interface.git@1.0.0#egg=make_question_interface
