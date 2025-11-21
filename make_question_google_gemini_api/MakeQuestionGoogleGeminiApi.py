@@ -1,6 +1,7 @@
 from make_question_interface.IMakeQuestion import IMakeQuestion
 from make_question_interface.Exceptions.QuestionNotMadeException import QuestionNotMadeException
 from make_question_google_gemini_api.Config import Config
+from make_question_interface.Results import Results
 
 class MakeQuestionGoogleGeminiApi(IMakeQuestion):
     def __init__(self, config: Config):
@@ -14,3 +15,13 @@ class MakeQuestionGoogleGeminiApi(IMakeQuestion):
         if self._answer_text_raw is None:
             raise QuestionNotMadeException("Question has not been made yet.")
         return self._answer_text_raw
+    
+    def get_results(self):
+        results = Results(
+            "This is the raw answer",
+            0.0,
+            1.0,
+            "MakeQuestionGoogleGeminiApi",
+            "gemini-1.5"
+        )
+        return super().get_results()
