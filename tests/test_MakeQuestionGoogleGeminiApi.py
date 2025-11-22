@@ -11,3 +11,8 @@ class test_MakeQuestionGoogleGeminiApi(unittest.TestCase):
         with self.assertRaises(QuestionNotMadeException) as context:
             self.make_question_instance.get_answer_text_raw()
         self.assertTrue('Question has not been made yet.' in str(context.exception))
+        
+    def test_get_results_without_making_question(self):
+        with self.assertRaises(QuestionNotMadeException) as context:
+            self.make_question_instance.get_results()
+        self.assertTrue('Question has not been made yet.' in str(context.exception))
