@@ -4,5 +4,5 @@ import os
 
 mqgga = MakeQuestionGoogleGeminiApi()
 mqgga.make_question("Which is the Bangladesh capital?")
-answer = mqgga.get_answer_text_raw()
+answer = mqgga.get_results()
 print(answer)

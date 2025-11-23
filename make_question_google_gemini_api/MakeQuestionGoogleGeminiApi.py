@@ -21,6 +21,9 @@ class MakeQuestionGoogleGeminiApi(IMakeQuestion):
         self._question = None
         self._default_model = "models/gemini-2.5-flash"
         self._default_temperature = 0.1
+        
+    def get_implementation_alias(self) -> str:
+        return "MakeQuestionGoogleGeminiApi"
 
     def make_question(self, question: str) -> str:
         self._question = question
@@ -28,7 +31,7 @@ class MakeQuestionGoogleGeminiApi(IMakeQuestion):
     def get_answer_text_raw(self) -> str:
         self._validate_before_make_question()
         results = self.get_results()
-        return results
+        return results.response_content
     
     def get_results(self) -> Results:
         self._validate_before_make_question()
@@ -45,8 +48,10 @@ class MakeQuestionGoogleGeminiApi(IMakeQuestion):
             raw_response,
             initial_unix_timestamp_with_ms,
             final_unix_timestamp_with_ms,
-            "MakeQuestionGoogleGeminiApi",
-            self._default_model
+            self.get_implementation_alias(),
+            self._default_model,
+            {},
+            raw_response.content
         )
         return results
     
