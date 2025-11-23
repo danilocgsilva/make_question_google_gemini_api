@@ -27,8 +27,8 @@ class MakeQuestionGoogleGeminiApi(IMakeQuestion):
 
     def get_answer_text_raw(self) -> str:
         self._validate_before_make_question()
-        self.get_results()
-        return self._answer_text_raw
+        results = self.get_results()
+        return results
     
     def get_results(self) -> Results:
         self._validate_before_make_question()
@@ -38,13 +38,11 @@ class MakeQuestionGoogleGeminiApi(IMakeQuestion):
             temperature=self._default_temperature,
             google_api_key=self._config["api_key"]
         )
-        response = llm.invoke(self._question)
+        raw_response = llm.invoke(self._question)
         final_unix_timestamp_with_ms = time.time()
         
-        print(response)
-        
         results = Results(
-            self._answer_text_raw,
+            raw_response,
             initial_unix_timestamp_with_ms,
             final_unix_timestamp_with_ms,
             "MakeQuestionGoogleGeminiApi",
