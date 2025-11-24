@@ -44,16 +44,25 @@ class MakeQuestionGoogleGeminiApi(IMakeQuestion):
         raw_response = llm.invoke(self._question)
         final_unix_timestamp_with_ms = time.time()
         
-        results = Results(
-            raw_response,
-            initial_unix_timestamp_with_ms,
-            final_unix_timestamp_with_ms,
-            self.get_implementation_alias(),
-            self._default_model,
-            {},
-            raw_response.content
+        return Results(
+            raw_answer=raw_response,
+            timestamp_start=initial_unix_timestamp_with_ms,
+            timestamp_end=final_unix_timestamp_with_ms,
+            implementation_name=self.get_implementation_alias(),
+            model_name=self._default_model,
+            parameters={},
+            response_content=raw_response.content,
+            raw_answer_dict=self.response_to_dict(raw_response)
         )
-        return results
+        
+    def response_to_dict(self, raw_response) -> dict:
+        return {
+            "content": raw_response.content,
+            "additional_kwargs": raw_response.additional_kwargs,
+            "response_metadata": raw_response.response_metadata,
+            "id": raw_response.id,
+            "usage_metadata": raw_response.usage_metadata
+        }
     
     def _validate_before_make_question(self):
         if self._question is None:

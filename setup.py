@@ -2,12 +2,12 @@ from setuptools import setup, find_packages
 
 setup(
     name="make_question_google_gemini_api",
-    version="1.0.0",
+    version="1.1.0",
     packages=find_packages(),
     author="Danilo",
     author_email="contact@danilocgsilva.me",
     install_requires=[
-        "make_question_interface @ git+https://git@github.com/danilocgsilva/make_question_interface.git@1.7.0#egg=make_question_interface"
+        "make_question_interface @ git+https://git@github.com/danilocgsilva/make_question_interface.git@1.10.0#egg=make_question_interface"
     ],
     description="Implements a question-making function using Google Gemini API.",
     long_description=open("README.md").read(),

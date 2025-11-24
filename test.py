@@ -5,4 +5,5 @@ import os
 mqgga = MakeQuestionGoogleGeminiApi()
 mqgga.make_question("Which is the Bangladesh capital?")
 answer = mqgga.get_results()
+# print(answer.to_json(formatted=True))
 print(answer)
