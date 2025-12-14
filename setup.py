@@ -7,7 +7,7 @@ setup(
     author="Danilo",
     author_email="contact@danilocgsilva.me",
     install_requires=[
-        "make_question_interface @ git+https://git@github.com/danilocgsilva/make_question_interface.git@1.10.0#egg=make_question_interface"
+        "make_question_interface @ git+https://git@github.com/danilocgsilva/make_question_interface.git"
     ],
     description="Implements a question-making function using Google Gemini API.",
     long_description=open("README.md").read(),

@@ -1,2 +1,2 @@
--e git+https://github.com/danilocgsilva/make_question_interface.git@main#egg=make_question_interface
+-e git+https://github.com/danilocgsilva/make_question_interface.git
 langchain_google_genai
